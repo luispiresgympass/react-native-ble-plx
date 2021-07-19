@@ -154,6 +154,14 @@ RCT_EXPORT_METHOD(connectedDevices:(NSArray<NSString*>*)serviceUUIDs
                         reject:reject];
 }
 
+RCT_EXPORT_METHOD(retrievePeripherals:(NSArray<NSString*>*)serviceUUIDs
+                          resolver:(RCTPromiseResolveBlock)resolve
+                          rejecter:(RCTPromiseRejectBlock)reject) {
+    [_manager retrievePeripherals:serviceUUIDs
+                       resolve:resolve
+                        reject:reject];
+}
+
 // Mark: Connection management -----------------------------------------------------------------------------------------
 
 RCT_EXPORT_METHOD(connectToDevice:(NSString*)deviceIdentifier
@@ -504,5 +512,6 @@ RCT_EXPORT_METHOD(logLevel:(RCTPromiseResolveBlock)resolve
     [_manager logLevel:resolve
                 reject:reject];
 }
+
 
 @end
