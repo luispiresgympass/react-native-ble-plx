@@ -1251,4 +1251,13 @@ export class BleManager {
     )
     return new Descriptor(nativeDescriptor, this)
   }
+
+  async retrievePeripherals(serviceUUIDs: Array<UUID>): Promise<Array<NativeDevice>> {
+    const nativeDevices = await this._callPromise(BleModule.retrievePeripherals(serviceUUIDs))
+    return nativeDevices.map((nativeDevice: NativeDevice) => {
+      return new Device(nativeDevice, this)
+    })
+  }
 }
+
+//retrievePeripherals
